@@ -18,3 +18,14 @@ java -jar ~/sequences/trimmomatic-0.38.jar PE -threads 2 -phred33 -trimlog Pd882
 ```
 Another FastQC revealed the adaptor content reduced to ~2% in the resulting trimmed sequences. 
 ![image](https://github.com/user-attachments/assets/5f2530df-92b9-40e7-944a-37dc20904694)
+
+The following table summarizes the results from Trimmomatic:
+
+|  Sequence  | Reads | Adaptor Content |
+| ------------- | ------------- | -------------- |
+| Raw Forward  | 7692782  | ~12% |
+| Raw Reverse  | 7692782  | ~12% |
+| Trimmed Forward  | 6356740  | ~2% |
+| Trimmed Reverse  | 6356740  | ~2% |
+
+***NOTE:** HTML files from the FastQC before and after trimming can be found under supplementaries*
