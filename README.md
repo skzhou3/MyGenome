@@ -27,7 +27,9 @@ fastqc Pd8825_1_paired.fastq
 fastqc Pd8825_2_paired.fastq
 ```
 *Another FastQC revealed the adaptor content reduced to ~2% in the resulting trimmed sequences.*
-![image](https://github.com/user-attachments/assets/5f2530df-92b9-40e7-944a-37dc20904694)
+![Base](https://github.com/user-attachments/assets/81f0997b-49c6-41bc-a33a-2267055d3077)
+![tile](https://github.com/user-attachments/assets/05782ad3-2267-4a01-afd1-981113c4d759)
+![adaptor](https://github.com/user-attachments/assets/5f2530df-92b9-40e7-944a-37dc20904694)
 
 The following table summarizes the results from Trimmomatic:
 
@@ -42,4 +44,4 @@ The following table summarizes the results from Trimmomatic:
 ## Assembly
 Prepare for genome assembly by transferring files from virtual machine to MCC. 
 1. Log into MCC.
-2. 
+2. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
