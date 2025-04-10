@@ -46,7 +46,22 @@ Prepare for genome assembly by transferring files from virtual machine to MCC.
 1. Log into MCC.
 2. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
 Determine optimal k-mer value for genome assembly with Velvet.
-3. Use Velvet Advisor to get an initial k-mer value suggestion.
+3. Use [Velvet Advisor](https://dna.med.monash.edu.au/~torsten/velvet_advisor/) to get an initial k-mer value suggestion.
+4. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. *NOTE: We use a batch script to run this command. This batch file can be found under `SLURM_SCRITPS`.*
+```
+sbatch velvetoptimiser_noclean.sh Pd8825 61 131 10
+```
+5. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value.
+```
+sbatch velvetoptimiser_noclean.sh Pd8825 71 111 2
+```
+6. Run Velvet genome assembly with optimal k-mer value.
+```
+# singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bash       #This command is required if Velvet is not installed in MCC.
+velveth Pd8825_97_2 97 -shortPaired -fastq -separate Pd8825_1_paired.fastq Pd8825_2_paired.fastq
+velvetg Pd8825_97_2
+```
+7. Analyze the completness of the genome assembly with BUSCO.
    
 
 
