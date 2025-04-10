@@ -45,3 +45,8 @@ The following table summarizes the results from Trimmomatic:
 Prepare for genome assembly by transferring files from virtual machine to MCC. 
 1. Log into MCC.
 2. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
+Determine optimal k-mer value for genome assembly with Velvet.
+3. Use Velvet Advisor to get an initial k-mer value suggestion.
+   
+
+
