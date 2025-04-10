@@ -57,11 +57,23 @@ sbatch velvetoptimiser_noclean.sh Pd8825 71 111 2
 ```
 6. Run Velvet genome assembly with optimal k-mer value.
 ```
-# singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bash       #This command is required if Velvet is not installed in MCC.
 velveth Pd8825_97_2 97 -shortPaired -fastq -separate Pd8825_1_paired.fastq Pd8825_2_paired.fastq
 velvetg Pd8825_97_2
 ```
-7. Analyze the completness of the genome assembly with BUSCO.
-   
-
+   *Note: The following command is required before running the code above if Velvet is not installed in MCC.*
+```
+singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bash)
+```
+7. Finalize genome assembly.
+```
+perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
+perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
+perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
+```
+*Note: Scripts can be found under `SLURM_SCRIPTS`*
+9. Analyze the completness of the genome assembly with BUSCO.
+```
+sbatch BuscoSingularity.sh Pd8825_97/Pd8825_final.fasta
+```
+*Note: Scripts can be found under `SLURM_SCRIPTS`*
 
