@@ -60,9 +60,9 @@ sbatch velvetoptimiser_noclean.sh Pd8825 71 111 2
 velveth Pd8825_97_2 97 -shortPaired -fastq -separate Pd8825_1_paired.fastq Pd8825_2_paired.fastq
 velvetg Pd8825_97_2
 ```
-   *Note: The following command is required before running the code above if Velvet is not installed in MCC.*
+*Note: The following command is required before running the code above if Velvet is not installed in MCC.*
 ```
-singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bash)
+singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
 7. Finalize genome assembly.
 ```
