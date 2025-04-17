@@ -51,16 +51,26 @@ Determine optimal k-mer value for genome assembly with Velvet.
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 61 131 10
 ```
-5. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value.
+Results from 10-step:
+|  k-mer value  | Genome size | # of contigs | N50 | Fold coverage |
+| ------------- | ------------- | -------------- | -------------- |-------------- |
+| 91 | 42,162,223  | 5,418 | 34,028 | 45.23 |
+
+5. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value (based on 10-step results).
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 71 111 2
 ```
+Results from 2-step:
+|  k-mer value  | Genome size | # of contigs | N50 | Fold coverage |
+| ------------- | ------------- | -------------- | -------------- | -------------- |
+| 97 | 42,219,964  | 5,455 | 28,275 | 45.16 |
+
 6. Run Velvet genome assembly with optimal k-mer value.
 ```
 velveth Pd8825_97_2 97 -shortPaired -fastq -separate Pd8825_1_paired.fastq Pd8825_2_paired.fastq
 velvetg Pd8825_97_2
 ```
-*Note: The following command is required before running the code above if Velvet is not installed in MCC.*
+*Note: The following command is required before running the code above if Velvet is not installed in machine.*
 ```
 singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
