@@ -81,7 +81,8 @@ perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
 perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
 ```
 *Note: Scripts can be found under `SLURM_SCRIPTS`*
-9. Analyze the completness of the genome assembly with BUSCO.
+
+9. Assess the completness of the genome assembly with BUSCO.
 ```
 sbatch BuscoSingularity.sh Pd8825_97/Pd8825_final.fasta
 ```
