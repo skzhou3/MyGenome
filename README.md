@@ -74,7 +74,8 @@ velvetg Pd8825_97_2
 ```
 singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
-7. Finalize genome assembly.
+## Processing and finalizing assembly
+1. Finalize genome assembly (removing short contigs and checking sequence length).
 ```
 perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
 perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
@@ -82,9 +83,23 @@ perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
 ```
 *Note: Scripts can be found under `SCRIPTS`*
 
-8. Assess the completness of the genome assembly with BUSCO.
+2. Assess the completness of the genome assembly with BUSCO.
 ```
-sbatch BuscoSingularity.sh Pd8825_97/Pd8825_final.fasta
+sbatch BuscoSingularity.sh Pd8825_97_2/Pd8825_final.fasta
 ```
 *Note: Scripts can be found under `SLURM_SCRIPTS`*
 
+3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
+```
+blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_nh.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
+awk '$4/$3 > 0.9 {print $2 ",mitochondrion"}' MoMitochondrion.Pd8825.BLAST > Pd8825_mitochondrion.csv
+```
+*Note: The following command is required before running the code above if blastn is not installed in machine.*
+```
+singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf
+```
+## BLAST comparison against reference genome
+1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
+```
+blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' -out B71v2sh.Pd8825.BLAST
+```
