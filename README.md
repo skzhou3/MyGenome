@@ -74,7 +74,7 @@ velvetg Pd8825_97_2
 ```
 singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
-## Processing and finalizing assembly
+## Process and finalize assembly
 1. Finalize genome assembly (removing short contigs and checking sequence length).
 ```
 perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
