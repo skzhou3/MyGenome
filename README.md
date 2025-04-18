@@ -80,7 +80,7 @@ perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
 perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
 perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
 ```
-*Note: Scripts can be found under `SLURM_SCRIPTS`*
+*Note: Scripts can be found under `SCRIPTS`*
 
 8. Assess the completness of the genome assembly with BUSCO.
 ```
