@@ -91,7 +91,7 @@ sbatch BuscoSingularity.sh Pd8825_97_2/Pd8825_final.fasta
 Results from BUSCO:
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
 | ------------- | ------------- | 
-| 91.20% | 96.70%  | 
+| 91.2% | 96.7%  | 
 This BUSCO score is extremely low!! This result leads to some concern so we ran some diagnostics *(more information about this at the end)*.
 
 3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
@@ -113,6 +113,33 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 
 ## Diagnostics 
 1. Examining the deviance from the reference genome within specific contigs in the Velvet assembly using BLAST (format 6).
+```
+blastn -query B71v2sh_masked.fasta -subject Pd8825_final.fasta -evalue 1e-50 -outfmt 6 -out B71v2sh.Pd8825.BLAST.6
+sort -k1,1 -k7n B71v2sh.Pd8825.BLAST.6 | more
+```
+Singularity:
+```
+singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf 
+```
+From this BLAST we found that large portions of the genome have low deviation, but there are also substantial portions of high deviation (95-97% with contigs length >20,000 reads). If we wanted to manually identify some of these longer contigs with high deviation, we could run the following command:
+```
+grep -A 1 Pd8825_contig5889 Pd8825_final.fasta | NR=2 awk '{print substr($1,1,14629)}' | singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query - -db nr -outfmt 6 -remote
+```
+In this command, the contig we identified was Pd8825_contig5889. This BLAST primarily returned hits to 
 2. Assemble new genome with SPAdes.
+
+Results of SPAdes assembly:
+|  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
+| ------------- | ------------- | 
+| 98.4% | 98.6%  | 
+
+```
+blastn -query B71v2sh_masked.fasta -subject spades/Pd8825/Pd8825_final.fasta -evalue 1e-50 -outfmt 6 -out B71v2sh.Pd8825.spades.BLAST.6
+sort -k1,1 -k7n B71v2sh.Pd8825.spades.BLAST.6 | more
+```
+Singularity:
+```
+singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf 
+```
 3. Velvet assembly with SPAdes' trimmed reads.
 4. SPAdes assembly with initial manual trimmed reads. 
