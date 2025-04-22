@@ -153,6 +153,11 @@ singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-c
 Results of BLAST:
 Manually observing the resulting alignments, we again find areas of high deviation and areas of low deviation.
 Results of FastQC of SPAdes' trimmed reads:
+|  Sequence  | Reads | Adaptor Content |
+| ------------- | ------------- | -------------- |
+| Trimmed Forward  | 7024576  | ~2% |
+| Trimmed Reverse  | 7024576  | ~10% |
+There is a relatively high percentage of adaptor content present in the reverse sequences. To investigate this, we will run a Velvet assembly on these trimmed reads. 
 
 3. Velvet assembly with SPAdes' trimmed reads.
 4. SPAdes assembly with initial manual trimmed reads. 
