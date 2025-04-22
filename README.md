@@ -92,6 +92,7 @@ Results from BUSCO:
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
 | ------------- | ------------- | 
 | 91.2% | 96.7%  | 
+
 This BUSCO score is extremely low!! This result leads to some concern so we ran some diagnostics *(more information about this at the end)*.
 
 3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
@@ -121,11 +122,12 @@ Singularity:
 ```
 singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf 
 ```
-From this BLAST we found that large portions of the genome have low deviation, but there are also substantial portions of high deviation (95-97% with contigs length >20,000 reads). If we wanted to manually identify some of these longer contigs with high deviation, we could run the following command:
+From this BLAST we found that large portions of the genome have low deviation, but there are also substantial portions of high deviation (95-97% with contigs length >20,000 reads). If we wanted to manually identify some of these longer contigs with high deviation, we could run the following command (including singularity):
 ```
 grep -A 1 Pd8825_contig5889 Pd8825_final.fasta | NR=2 awk '{print substr($1,1,14629)}' | singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query - -db nr -outfmt 6 -remote
 ```
-In this command, the contig we identified was Pd8825_contig5889. This BLAST primarily returned hits to 
+In this command, the contig we identified was Pd8825_contig5889. This BLAST primarily returned hits to *Pyricularia oryzae* so this command was not very fruitful. Alternatively, we would like to identiy the Internal Transcribed Spacers (ITS) regions to BLAST instead. 
+
 2. Assemble new genome with SPAdes.
 
 Results of SPAdes assembly:
