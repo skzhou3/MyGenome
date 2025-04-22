@@ -129,6 +129,11 @@ grep -A 1 Pd8825_contig5889 Pd8825_final.fasta | NR=2 awk '{print substr($1,1,14
 In this command, the contig we identified was Pd8825_contig5889. This BLAST primarily returned hits to *Pyricularia oryzae* so this command was not very fruitful. Alternatively, we would like to identiy the Internal Transcribed Spacers (ITS) regions to BLAST instead. 
 
 2. Assemble new genome with SPAdes.
+The following SPAdes pipline trims, assmebles, and finalizes the genome assmebly. Thus the only input required are the raw reads and bash script.
+```
+sbatch trim-spades.sh . Pd8825 yes
+```
+*Note: Bash script can be found under `SLURM_SCRIPTS`*
 
 Results of SPAdes assembly:
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
