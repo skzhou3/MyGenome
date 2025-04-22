@@ -135,11 +135,12 @@ sbatch trim-spades.sh . Pd8825 yes
 ```
 *Note: Bash script can be found under `SLURM_SCRIPTS`*
 
-Results of SPAdes assembly:
+Results of SPAdes assembly (BUSCO command can be found above):
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
 | ------------- | ------------- | 
 | 98.4% | 98.6%  | 
 
+This score is much higher! Now we want to know why this is...
 ```
 blastn -query B71v2sh_masked.fasta -subject spades/Pd8825/Pd8825_final.fasta -evalue 1e-50 -outfmt 6 -out B71v2sh.Pd8825.spades.BLAST.6
 sort -k1,1 -k7n B71v2sh.Pd8825.spades.BLAST.6 | more
