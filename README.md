@@ -88,6 +88,11 @@ perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
 sbatch BuscoSingularity.sh Pd8825_97_2/Pd8825_final.fasta
 ```
 *Note: Scripts can be found under `SLURM_SCRIPTS`*
+Results from BUSCO:
+|  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
+| ------------- | ------------- | 
+| 91.20% | 96.70%  | 
+This BUSCO score is extremely low!! This result leads to some concern so we ran some diagnostics *(more information about this at the end)*.
 
 3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
 ```
@@ -105,3 +110,9 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 ```
 
 ## Gene prediction
+
+## Diagnostics 
+1. Examining the deviance from the reference genome within specific contigs in the Velvet assembly using BLAST (format 6).
+2. Assemble new genome with SPAdes.
+3. Velvet assembly with SPAdes' trimmed reads.
+4. SPAdes assembly with initial manual trimmed reads. 
