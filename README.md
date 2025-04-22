@@ -103,3 +103,5 @@ singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-c
 ```
 blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' -out B71v2sh.Pd8825.BLAST
 ```
+
+## Gene prediction
