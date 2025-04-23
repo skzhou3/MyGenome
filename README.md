@@ -72,7 +72,7 @@ velvetg Pd8825_97_2
 ```
 *Note: The following command is required before running the code above if Velvet is not installed in machine.*
 ```
-singularity run --app velvet1012 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
+singularity run --app velvet1210 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
 ## Process and finalize assembly
 *To finalize genome assembly, the following renames contig headers and removes short reads (<300 bp).*
