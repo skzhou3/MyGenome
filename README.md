@@ -1,7 +1,7 @@
 # MyGenome
 *The following is a basic record of the methods and results from the whole genome assembly of rice blast fungus, Pyricularia oryzae.*
 
-*P.oryzae* was sampled from host plant *Paspalum distichum* and sequenced with ILLUMINA. *Pyricularia oryzae*, now known as *Magnaporthe oryzae* (2002), causes rice blast and is a major plant pathogen infecting rice and other cereal crops such as wheat, rye, and barley. 
+*P.oryzae* was sampled from host plant *Paspalum distichum* and sequenced with the ILLUMINA NovaSeq X platform. *Pyricularia oryzae*, now known as *Magnaporthe oryzae* (2002), causes rice blast and is a major plant pathogen infecting rice and other cereal crops such as wheat, rye, and barley. 
 
 ## Sequence quality assessment
 *Upload and assess the quality of the forward and reverse sequences. Trim if adaptor content is above 5%.*
