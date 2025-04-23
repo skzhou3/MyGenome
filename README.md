@@ -3,8 +3,7 @@
 
 ## Sequence quality assessment
 *Upload and assess the quality of the forward and reverse sequences. Trim if adaptor content is above 5%.*
-1. Upload sequences as .gz files.
-2. Run both forward and reverse sequences through FastQC for quality assessment.
+1. Run both forward and reverse sequences through FastQC for quality assessment.
 ```
 fastqc Pd8825_1.fq.gz
 fastqc Pd8825_2.fq.gz
@@ -75,6 +74,7 @@ velvetg Pd8825_97_2
 singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
 ## Process and finalize assembly
+*To finalize genome assembly, the following renames contig headers and removes short reads (<300 bp).*
 1. Finalize genome assembly (removing short contigs and checking sequence length).
 ```
 perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
