@@ -71,7 +71,7 @@ velvetg Pd8825_97_2
 ```
 *Note: The following command is required before running the code above if Velvet is not installed in machine.*
 ```
-singularity exec /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
+singularity run --app velvet1012 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
 ## Process and finalize assembly
 *To finalize genome assembly, the following renames contig headers and removes short reads (<300 bp).*
@@ -113,6 +113,7 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 ## Gene prediction
 
 ## Diagnostics 
+*Due to an initial low BUSCO score of ~91%, the following are a series of test to determine the cause of this low alignment.*
 1. Examining the deviance from the reference genome within specific contigs in the Velvet assembly using BLAST (format 6).
 ```
 blastn -query B71v2sh_masked.fasta -subject Pd8825_final.fasta -evalue 1e-50 -outfmt 6 -out B71v2sh.Pd8825.BLAST.6
@@ -122,11 +123,11 @@ Singularity:
 ```
 singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf 
 ```
-From this BLAST we found that large portions of the genome have low deviation, but there are also substantial portions of high deviation (95-97% with contigs length >20,000 reads). If we wanted to manually identify some of these longer contigs with high deviation, we could run the following command (including singularity):
+From this BLAST, we generally found that large portions of the genome have low deviation. However, there were also substantial portions of high deviation (95-97% with contigs length >20,000 reads). This suggest that this sample may be a hybrid strain of *Paspalum distichum* and some other fungus. To identify this probable foreign DNA, we could manually identify some long contigs with high deviation, and run the following command (including singularity):
 ```
 grep -A 1 Pd8825_contig5889 Pd8825_final.fasta | NR=2 awk '{print substr($1,1,14629)}' | singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query - -db nr -outfmt 6 -remote
 ```
-In this command, the contig we identified was Pd8825_contig5889. This BLAST primarily returned hits to *Pyricularia oryzae* so this command was not very fruitful. Alternatively, we would like to identiy the Internal Transcribed Spacers (ITS) regions to BLAST instead. 
+In this command, the contig we identified was Pd8825_contig5889. This BLAST primarily returned hits to *Pyricularia oryzae* so this command overall did not lead to very fruitful results. Alternatively, we would likely get more interesting results by identifying the Internal Transcribed Spacers (ITS) regions within this assmebly to BLAST instead. 
 
 2. Assemble new genome with SPAdes.
 The following SPAdes pipline trims, assmebles, and finalizes the genome assmebly. Thus the only input required are the raw reads and bash script.
