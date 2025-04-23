@@ -1,6 +1,8 @@
 # MyGenome
 *The following is a basic record of the methods and results from the whole genome assembly of rice blast fungus, Pyricularia oryzae.*
 
+*P.oryzae* was sampled from host plant *Paspalum distichum* and sequenced with ILLUMINA. *Pyricularia oryzae*, now known as *Magnaporthe oryzae* (2002), causes rice blast and is a major plant pathogen infecting rice and other cereal crops such as wheat, rye, and barley. 
+
 ## Sequence quality assessment
 *Upload and assess the quality of the forward and reverse sequences. Trim if adaptor content is above 5%.*
 1. Run both forward and reverse sequences through FastQC for quality assessment.
@@ -112,7 +114,7 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 ## Gene prediction
 
 ## Diagnostics 
-*Due to an initial low BUSCO score of ~91%, the following are a series of test to determine the cause of this low alignment.*
+*Due to an initial low BUSCO score of ~91%, the following are a series of test to determine the cause of this high deviance from the reference genome.*
 1. Examining the deviance from the reference genome within specific contigs in the Velvet assembly using BLAST (format 6).
 ```
 blastn -query B71v2sh_masked.fasta -subject Pd8825_final.fasta -evalue 1e-50 -outfmt 6 -out B71v2sh.Pd8825.BLAST.6
@@ -122,7 +124,7 @@ Singularity:
 ```
 singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf 
 ```
-From this BLAST, we generally found that large portions of the genome have low deviation. However, there were also substantial portions of high deviation (95-97% with contigs length >20,000 reads). This suggest that this sample may be a hybrid strain of *Paspalum distichum* and some other fungus. To identify this probable foreign DNA, we could manually identify some long contigs with high deviation, and run the following command (including singularity):
+From this BLAST, we generally found that large portions of the genome have low deviation. However, there were also substantial portions of high deviation (95-97% with contigs length >20,000 reads). This suggest that this sample may be a hybrid strain of *Pyricularia oryzae* and some other fungus. To identify this probable foreign DNA, we could manually identify some long contigs with high deviation, and run the following command (including singularity):
 ```
 grep -A 1 Pd8825_contig5889 Pd8825_final.fasta | NR=2 awk '{print substr($1,1,14629)}' | singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query - -db nr -outfmt 6 -remote
 ```
