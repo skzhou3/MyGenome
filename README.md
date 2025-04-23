@@ -161,5 +161,6 @@ BUSCO score of resulting assembly:
 | ------------- | ------------- | 
 | 91.6% | 91.7%  | 
 
+Since the BUSCO score of the Velvet assmebly with SPAdes' trimmed reads is also low, this suggests that it is SPAdes' assembly method that led to the difference in BUSCO score.
 4. SPAdes assembly with initial manually trimmed reads.
 
