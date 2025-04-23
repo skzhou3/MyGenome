@@ -155,4 +155,11 @@ Results of FastQC of SPAdes' trimmed reads:
 There is a relatively high percentage of adaptor content present in the reverse sequences. To investigate this, we will run a Velvet assembly on these trimmed reads. 
 
 3. Velvet assembly with SPAdes' trimmed reads.
-4. SPAdes assembly with initial manual trimmed reads. 
+
+BUSCO score of resulting assembly:
+|  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
+| ------------- | ------------- | 
+| 91.6% | 91.7%  | 
+
+4. SPAdes assembly with initial manually trimmed reads.
+
