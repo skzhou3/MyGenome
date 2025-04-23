@@ -77,6 +77,7 @@ singularity run --app velvet1210 /share/singularity/images/ccs/conda/amd-conda2-
 ## Process and finalize assembly
 *To finalize genome assembly, the following renames contig headers and removes short reads (<300 bp).*
 1. Finalize genome assembly (removing short contigs and checking sequence length).
+Before running the following commands, rename contigs.fa to Pd8825.fasta...
 ```
 perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
 perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
