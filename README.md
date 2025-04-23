@@ -75,7 +75,7 @@ velvetg Pd8825_97_2
 singularity run --app velvet1210 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
 ## Process and finalize assembly
-*To finalize genome assembly, the following renames contig headers and removes short reads (<300 bp).*
+*To finalize genome assembly, the following renames contig headers and removes short reads (<200 bp).*
 1. Finalize genome assembly (removing short contigs and checking sequence length).
 Before running the following commands, rename contigs.fa to Pd8825.fasta...
 ```
