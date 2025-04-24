@@ -46,7 +46,7 @@ The following table summarizes the results from Trimmomatic:
 1. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
 Determine optimal k-mer value for genome assembly with Velvet.
 2. Use [Velvet Advisor](https://dna.med.monash.edu.au/~torsten/velvet_advisor/) to get an initial k-mer value suggestion.
-3. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. ***NOTE:** We use a batch script to run this command. This batch file can be found under `SLURM_SCRITPS`.*
+3. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. ***NOTE:** We use a bash script to run this command. This bash file can be found under `SLURM_SCRITPS`.*
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 61 131 10
 ```
@@ -55,7 +55,7 @@ Results from 10-step:
 | ------------- | ------------- | -------------- | -------------- |-------------- |
 | 91 | 42,162,223  | 5,418 | 34,028 | 45.23 |
 
-4. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value (based on 10-step results).
+4. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value (adjust range based on 10-step results).
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 71 111 2
 ```
