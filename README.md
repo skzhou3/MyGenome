@@ -122,6 +122,8 @@ singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-c
 ```
 awk '{sum += $4} END {print sum}' MoMitochondrion.Pd8825.BLAST
 ```
+Total length of mitochondrial sequences: 37536
+
 ## BLAST comparison against reference genome
 1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
 ```
