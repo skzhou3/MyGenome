@@ -172,4 +172,4 @@ Since the BUSCO score of the Velvet assmebly with SPAdes' trimmed reads is also 
 BUSCO score of resulting assembly:
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
 | ------------- | ------------- | 
-|  |  | 
+| 98.3% | 98.5% | 
