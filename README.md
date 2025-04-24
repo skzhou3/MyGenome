@@ -47,7 +47,7 @@ Prepare for genome assembly by transferring files from virtual machine to MCC.
 2. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
 Determine optimal k-mer value for genome assembly with Velvet.
 3. Use [Velvet Advisor](https://dna.med.monash.edu.au/~torsten/velvet_advisor/) to get an initial k-mer value suggestion.
-4. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. *NOTE: We use a batch script to run this command. This batch file can be found under `SLURM_SCRITPS`.*
+4. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. ***NOTE:** We use a batch script to run this command. This batch file can be found under `SLURM_SCRITPS`.*
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 61 131 10
 ```
@@ -70,7 +70,7 @@ Results from 2-step:
 velveth Pd8825_97_2 97 -shortPaired -fastq -separate Pd8825_1_paired.fastq Pd8825_2_paired.fastq
 velvetg Pd8825_97_2
 ```
-*Note: The following command is required before running the code above if Velvet is not installed in machine.*
+***Note:** The following command is required before running the code above if Velvet is not installed in machine.*
 ```
 singularity run --app velvet1210 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf
 ```
@@ -83,13 +83,13 @@ perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
 perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
 perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
 ```
-*Note: Scripts can be found under `SCRIPTS`*
+***Note:** Scripts can be found under `SCRIPTS`*
 
 2. Assess the completness of the genome assembly with BUSCO.
 ```
 sbatch BuscoSingularity.sh Pd8825_97_2/Pd8825_final.fasta
 ```
-*Note: Scripts can be found under `SLURM_SCRIPTS`*
+***Note:** Scripts can be found under `SLURM_SCRIPTS`*
 Results from BUSCO:
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
 | ------------- | ------------- | 
@@ -102,7 +102,7 @@ This BUSCO score is extremely low!! This result leads to some concern so we ran 
 blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_nh.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
 awk '$4/$3 > 0.9 {print $2 ",mitochondrion"}' MoMitochondrion.Pd8825.BLAST > Pd8825_mitochondrion.csv
 ```
-*Note: The following command is required before running the code above if blastn is not installed in machine.*
+***Note:** The following command is required before running the code above if blastn is not installed in machine.*
 ```
 singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf
 ```
@@ -136,7 +136,7 @@ The following SPAdes pipline trims, assmebles, and finalizes the genome assmebly
 ```
 sbatch trim-spades.sh . Pd8825 yes
 ```
-*Note: Bash script can be found under `SLURM_SCRIPTS`*
+***Note:** Bash script can be found under `SLURM_SCRIPTS`*
 
 Results of SPAdes assembly (BUSCO command can be found above):
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
