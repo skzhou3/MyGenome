@@ -119,7 +119,7 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 ## Gene prediction
 
 ## Diagnostics 
-*Due to an initial low BUSCO score of ~91%, the following are a series of test to determine the cause of this high deviance from the reference genome.*
+*Due to an initial low BUSCO score of ~91%, the following are a series of tests to determine the cause of this high deviance from the reference genome.*
 1. Examining the deviance from the reference genome within specific contigs in the Velvet assembly using BLAST (format 6).
 ```
 blastn -query B71v2sh_masked.fasta -subject Pd8825_final.fasta -evalue 1e-50 -outfmt 6 -out B71v2sh.Pd8825.BLAST.6
