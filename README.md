@@ -111,12 +111,16 @@ This BUSCO score is extremely low!! This result leads to some concern so we ran 
 
 3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
 ```
-blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_nh.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
+blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
 awk '$4/$3 > 0.9 {print $2 ",mitochondrion"}' MoMitochondrion.Pd8825.BLAST > Pd8825_mitochondrion.csv
 ```
 ***NOTE:** The following command is required before running the code above if blastn is not installed in machine.*
 ```
 singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf
+```
+4. Ensure that the total length of mitochondrial sequences is less than 40kb. 
+```
+awk '{sum += $4} END {print sum}' MoMitochondrion.Pd8825.BLAST
 ```
 ## BLAST comparison against reference genome
 1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
