@@ -42,12 +42,11 @@ The following table summarizes the results from Trimmomatic:
 
 ***NOTE:** HTML files from the FastQC before and after trimming can be found under the `FastQC` directory.*
 ## Assembly
-Prepare for genome assembly by transferring files from virtual machine to MCC. 
-1. Log into MCC.
-2. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
+*Previous tasks were completed in the virtual machine. The following assmebly will be completed on MCC.* 
+1. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
 Determine optimal k-mer value for genome assembly with Velvet.
-3. Use [Velvet Advisor](https://dna.med.monash.edu.au/~torsten/velvet_advisor/) to get an initial k-mer value suggestion.
-4. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. ***NOTE:** We use a batch script to run this command. This batch file can be found under `SLURM_SCRITPS`.*
+2. Use [Velvet Advisor](https://dna.med.monash.edu.au/~torsten/velvet_advisor/) to get an initial k-mer value suggestion.
+3. Run VelvetOptimiser by steps of 10 to find an approximate optimal k-mer value. ***NOTE:** We use a batch script to run this command. This batch file can be found under `SLURM_SCRITPS`.*
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 61 131 10
 ```
@@ -56,7 +55,7 @@ Results from 10-step:
 | ------------- | ------------- | -------------- | -------------- |-------------- |
 | 91 | 42,162,223  | 5,418 | 34,028 | 45.23 |
 
-5. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value (based on 10-step results).
+4. Run VelvetOptimiser by steps of 2 to find most optimal k-mer value (based on 10-step results).
 ```
 sbatch velvetoptimiser_noclean.sh Pd8825 71 111 2
 ```
@@ -65,7 +64,7 @@ Results from 2-step:
 | ------------- | ------------- | -------------- | -------------- | -------------- |
 | 97 | 42,219,964  | 5,455 | 28,275 | 45.16 |
 
-6. Run Velvet genome assembly with optimal k-mer value.
+5. Run Velvet genome assembly with optimal k-mer value.
 ```
 velveth Pd8825_97_2 97 -shortPaired -fastq -separate Pd8825_1_paired.fastq Pd8825_2_paired.fastq
 velvetg Pd8825_97_2
@@ -76,7 +75,7 @@ singularity run --app velvet1210 /share/singularity/images/ccs/conda/amd-conda2-
 ```
 ## Process and finalize assembly
 *To finalize genome assembly, the following renames contig headers and removes short reads (<200 bp).*
-1. Finalize genome assembly (removing short contigs and checking sequence length).
+1. Finalize genome assembly.
 Before running the following commands, rename contigs.fa to Pd8825.fasta...
 ```
 perl SimpleFastaHeaders.pl Pd8825_97_2/Pd8825.fasta
@@ -84,6 +83,11 @@ perl Pd8825_97/CullShortContigs.pl Pd8825_97_2/Pd8825_nh.fasta
 perl Pd8825_97/SeqLen.pl Pd8825_97_2/Pd8825_final.fasta
 ```
 ***NOTE:** Scripts can be found under `SCRIPTS`*
+
+As the names suggest:
+- SimpleFastaHeaders.pl renames the headers (for each contig)
+- CullShortContigs.pl removes small contigs
+- SeqLen.pl checks overall sequence length and the length of each contig
 
 2. Assess the completness of the genome assembly with BUSCO.
 ```
@@ -165,3 +169,7 @@ Since the BUSCO score of the Velvet assmebly with SPAdes' trimmed reads is also 
 
 4. SPAdes assembly with initial manually trimmed reads.
 
+BUSCO score of resulting assembly:
+|  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
+| ------------- | ------------- | 
+|  |  | 
