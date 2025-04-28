@@ -4,7 +4,7 @@
 *Pyricularia oryzae*, now known as *Magnaporthe oryzae* (2002), causes rice blast and is a major plant pathogen infecting rice and other cereal crops such as wheat, rye, and barley. *P. oryzae* was sampled from host plant *Paspalum distichum* and sequenced with the ILLUMINA NovaSeq X platform. 
 
 ## Sequence quality assessment
-*Upload and assess the quality of the forward and reverse sequences. Trim if adaptor content is above 5%.*
+*Assess the quality of the forward and reverse sequences. Trim if adaptor content is above 5%. Also, note that the following commands are run on the virtual machine.*
 1. Run both forward and reverse sequences through FastQC for quality assessment.
 ```
 fastqc Pd8825_1.fq.gz
@@ -107,30 +107,11 @@ Results from BUSCO:
 | ------------- | ------------- | 
 | 91.2% | 96.7%  | 
 
-This BUSCO score is extremely low!! This result leads to some concern so we ran some diagnostics *(more information about this at the end)*.
+This BUSCO score is extremely low!! This result leads to some concern so we ran some diagnostics...
 
-3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
-```
-blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
-awk '$4/$3 > 0.9 {print $2 ",mitochondrion"}' MoMitochondrion.Pd8825.BLAST > Pd8825_mitochondrion.csv
-```
-***NOTE:** The following command is required before running the code above if blastn is not installed in machine.*
-```
-singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf
-```
-4. Ensure that the total length of mitochondrial sequences is less than 40kb. 
-```
-awk '{sum += $4} END {print sum}' MoMitochondrion.Pd8825.BLAST
-```
-Total length of mitochondrial sequences: 37536
+<details>
+<summary>Click on caret for more information about this investigation</summary>
 
-## BLAST comparison against reference genome
-1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
-```
-blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' -out B71v2sh.Pd8825.BLAST
-```
-
-## Gene prediction
 
 ## Diagnostics 
 *Due to an initial low BUSCO score of ~91%, the following are a series of tests to determine the cause of this high deviance from the reference genome.*
@@ -187,3 +168,48 @@ BUSCO score of resulting assembly:
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
 | ------------- | ------------- | 
 | 98.3% | 98.5% | 
+
+This confirms that SPAdes is a better assembly method for this particular genome compared to Velvet. 
+
+5. Summary of results
+
+|  Genome | BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
+| ------------- | ------------- | ------------- | 
+| Velvet assembly | 91.2% | 96.7% | 
+| SPAdes assembly | 98.4% | 98.6% | 
+| SPAdes trimmed reads + Velvet assembly | 91.6% | 91.7% | 
+| Personal trimmed reads + SPAdes assembly | 98.3% | 98.5% | 
+
+Due to the high BUSCO score and sequence quality of the trimmed reads, I decided to proceed with the last assmebly in the table above (personal trimmed reads + SPAdes assembly). 
+
+</details>
+
+3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
+```
+blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
+awk '$4/$3 > 0.9 {print $2 ",mitochondrion"}' MoMitochondrion.Pd8825.BLAST > Pd8825_mitochondrion.csv
+```
+***NOTE:** The following command is required before running the code above if blastn is not installed in machine.*
+```
+singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf
+```
+4. Ensure that the total length of mitochondrial sequences is less than 40kb. 
+```
+awk '{sum += $4} END {print sum}' MoMitochondrion.Pd8825.BLAST
+```
+Total length of mitochondrial sequences: 37536
+
+## BLAST comparison against reference genome
+1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
+```
+blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' -out B71v2sh.Pd8825.BLAST
+```
+
+## Gene prediction
+*After assembling the genome, the following determines the number of predicted proteins.*
+
+1. Prepare .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file).
+```
+echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
+```
+2. 
