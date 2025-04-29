@@ -206,10 +206,41 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 ```
 
 ## Gene prediction
-*After assembling the genome, the following determines the number of predicted proteins.*
+*After assembling the genome, the following predicts proteins using two different methods: SNAP and AUGUSTUS on the virtual machine.*
 
-1. Prepare .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file).
+1. Prepare MAKER annotation.
 ```
 echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
+maker2zff B71Ref2.gff3
 ```
-2. 
+In order of the commands:
+- Prepares .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file)
+- Converts MAKER annotations to ZFF format for SNAP.
+The following command can be used to take a peak at the number of genes annoted. 
+```
+fathom genome.ann genome.dna -gene-stats
+```
+This will display the number of sequences (contigs), the number of genes annotated, GC
+content (%), average intron and exon lengths, etc.
+2. Extract genome regions containing unique genes.
+```
+fathom genome.ann genome.dna -categorize 1000
+fathom uni.ann uni.dna -export 1000 -plus
+```
+3. Train HMM using forge tool.
+```
+forge export.ann export.dna
+hmm-assembler.pl Moryzae . > Moryzae.hmm
+```
+4. Run SNAP.
+***NOTE:**scp final genome assembly into virtual machine before running the following*
+```
+snap-hmm Moryzae.hmm Pd8825_final.fasta > Pd8825-snap.zff
+snap-hmm Moryzae.hmm Pd8825_final.fasta -gff > Pd8825-snap.gff2
+```
+The two SNAP commands above achieve the same result but in two different formats (.zff or .gff2).
+5. Run AUGUSTUS
+```
+augustus --species=magnaporthe_grisea --gff3=on --singlestrand=true --progress=true ../snap/Pd8825_final.fasta > Pd8825-augustus.gff3
+```
+6. 
