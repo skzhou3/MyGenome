@@ -233,7 +233,8 @@ forge export.ann export.dna
 hmm-assembler.pl Moryzae . > Moryzae.hmm
 ```
 4. Run SNAP.
-***NOTE:**scp final genome assembly into virtual machine before running the following*
+
+***NOTE:** Use scp to transfer final genome assembly into virtual machine before running the following*
 ```
 snap-hmm Moryzae.hmm Pd8825_final.fasta > Pd8825-snap.zff
 snap-hmm Moryzae.hmm Pd8825_final.fasta -gff > Pd8825-snap.gff2
