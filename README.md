@@ -214,7 +214,7 @@ echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
 maker2zff B71Ref2.gff3
 ```
 In order of the commands:
-- Prepares .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file)
+- Prepares .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file).
 - Converts MAKER annotations to ZFF format for SNAP.
 The following command can be used to take a peak at the number of genes annoted. 
 ```
@@ -222,16 +222,19 @@ fathom genome.ann genome.dna -gene-stats
 ```
 This will display the number of sequences (contigs), the number of genes annotated, GC
 content (%), average intron and exon lengths, etc.
+
 2. Extract genome regions containing unique genes.
 ```
 fathom genome.ann genome.dna -categorize 1000
 fathom uni.ann uni.dna -export 1000 -plus
 ```
+
 3. Train HMM using forge tool.
 ```
 forge export.ann export.dna
 hmm-assembler.pl Moryzae . > Moryzae.hmm
 ```
+
 4. Run SNAP.
 
 ***NOTE:** Use scp to transfer final genome assembly into virtual machine before running the following*
@@ -240,8 +243,23 @@ snap-hmm Moryzae.hmm Pd8825_final.fasta > Pd8825-snap.zff
 snap-hmm Moryzae.hmm Pd8825_final.fasta -gff > Pd8825-snap.gff2
 ```
 The two SNAP commands above achieve the same result but in two different formats (.zff or .gff2).
+
 5. Run AUGUSTUS
 ```
 augustus --species=magnaporthe_grisea --gff3=on --singlestrand=true --progress=true ../snap/Pd8825_final.fasta > Pd8825-augustus.gff3
 ```
-6. 
+
+6. Run MAKER (gene annotation pipeline that integrates the information for both SNAP and AUGUSTUS).
+```
+maker -CTL
+maker 2>&1 | tee maker.log
+```
+In order of the commands:
+- Create configuration files.
+- Run MAKER while also saving an error log and output log into maker.log.
+Before running MAKER, make adjustments to `maker_opts.ctl ` as needed with nano.
+
+7. Merge results into one file.
+```
+gff3_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log -o Pd8825-annotations.gff
+```
