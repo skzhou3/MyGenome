@@ -48,7 +48,7 @@ The following table summarizes the results from Trimmomatic:
 | Trimmed Forward  | 6356740  | ~2% |
 | Trimmed Reverse  | 6356740  | ~2% |
 
-***NOTE:** HTML files from the FastQC before and after trimming can be found under the `FastQC` directory.*
+***NOTE:** HTML files from the FastQC before and after trimming can be found under the [FastQC](FastQC) directory.*
 ## Assembly
 *Previous tasks were completed in the virtual machine. The following assmebly will be completed on MCC.* 
 1. Use scp to transfer trimmed sequence reads from virtual machine to MCC machine.
