@@ -262,4 +262,5 @@ Before running MAKER, make adjustments to `maker_opts.ctl ` as needed with nano.
 7. Merge results into one file.
 ```
 gff3_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log -o Pd8825-annotations.gff
+fasta_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log
 ```
