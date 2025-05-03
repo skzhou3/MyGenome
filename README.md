@@ -220,7 +220,7 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
 maker2zff B71Ref2.gff3
 ```
-***NOTE:** [B71Ref2_a0.3.gff3](files/B71Ref2_a0.3.gff3) and [B71Ref2.fasta](files/B71Ref2.fasta) is required for the command above and can be found in the files directory.*
+***NOTE:** [B71Ref2_a0.3.gff3](files/B71Ref2_a0.3.gff3) and [B71Ref2.fasta](files/B71Ref2.zip) is required for the command above and can be found in the files directory.*
 
 In order of the commands:
 - Prepares .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file).
