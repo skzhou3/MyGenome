@@ -188,7 +188,7 @@ Due to the high BUSCO score and sequence quality of the trimmed reads, I decided
 
 </details>
 
-After some investigative work, I decided to continue with a SPAdes assembly on my initial trimmed reads. The final assembly can be found in the [data](data) directory.
+After some investigative work, I decided to continue with a SPAdes assembly with my initial trimmed reads. The final assembly can be found in the [data](data/Pd8825_final.zip) directory.
 
 3. Identify mitochondrial genome and export a list of contigs with mitochondrial DNA for NCBI submission.
 ```
@@ -203,13 +203,14 @@ singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-c
 ```
 awk '{sum += $4} END {print sum}' MoMitochondrion.Pd8825.BLAST
 ```
-Total length of mitochondrial sequences: 37536
+Total length of mitochondrial sequences: 37536 bp
 
 ## BLAST comparison against reference genome
 1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
 ```
 blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' -out B71v2sh.Pd8825.BLAST
 ```
+***NOTE:** [B71v2sh_masked.fasta](files/B71v2sh_masked.zip) and singularity is required for the command above. Additionally, BLAST file can be found in the [data](data/B71v2sh.Pd8825.BLAST) directory.*
 
 ## Gene prediction
 *After assembling the genome, the following predicts proteins using two different methods: SNAP and AUGUSTUS on the virtual machine.*
@@ -219,6 +220,8 @@ blastn -query B71v2sh_masked.fasta -subject Pd8825_97_2/Pd8825_final.fasta -eval
 echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
 maker2zff B71Ref2.gff3
 ```
+***NOTE:** [B71Ref2_a0.3.gff3](files/B71Ref2_a0.3.gff3) and [B71Ref2.fasta](files/B71Ref2.fasta) is required for the command above and can be found in the files directory.*
+
 In order of the commands:
 - Prepares .gff3 file for MAKER annotations (append fasta genome sequences to end of gff3 file).
 - Converts MAKER annotations to ZFF format for SNAP.
@@ -270,3 +273,4 @@ Before running MAKER, make adjustments to `maker_opts.ctl ` as needed with nano.
 gff3_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log -o Pd8825-annotations.gff
 fasta_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log
 ```
+The resulting files includes merged files of all [annotations](data//Pd8825-annotations.zip), [proteins](data/Pd8825-genes.fasta.all.maker.proteins.fasta), and [transcripts](data/Pd8825-genes.fasta.all.maker.transcripts.fasta) predicted by both SNAP and AUGUSTUS (which can all be found in the data directory and are also linked). 
