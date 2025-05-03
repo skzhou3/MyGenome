@@ -195,7 +195,7 @@ After some investigative work, I decided to continue with a SPAdes assembly on m
 blastn -query MoMitochondrion.fasta -subject Pd8825_97_2/Pd8825_final.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitochondrion.Pd8825.BLAST
 awk '$4/$3 > 0.9 {print $2 ",mitochondrion"}' MoMitochondrion.Pd8825.BLAST > Pd8825_mitochondrion.csv
 ```
-***NOTE:** The following command is required before running the code above if blastn is not installed in machine.*
+***NOTE:** [MoMitochondrion.fasta](files/MoMitochondrion.fasta) is required for the command above and the resulting csv file can be found in the [data](Pd8825_mitochondrion.csv) directory. Additionally, the following command is required before running the code above if blastn is not installed in machine.*
 ```
 singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf
 ```
