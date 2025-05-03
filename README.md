@@ -273,4 +273,4 @@ Before running MAKER, make adjustments to `maker_opts.ctl ` as needed with nano.
 gff3_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log -o Pd8825-annotations.gff
 fasta_merge -d Pd8825_final.maker.output/Pd8825_final_master_datastore_index.log
 ```
-The resulting files includes merged files of all [annotations](data//Pd8825-annotations.zip), [proteins](data/Pd8825-genes.fasta.all.maker.proteins.fasta), and [transcripts](data/Pd8825-genes.fasta.all.maker.transcripts.fasta) predicted by both SNAP and AUGUSTUS (which can all be found in the data directory and are also linked). 
+The results include merged files of all [annotations](data//Pd8825-annotations.zip), [proteins](data/Pd8825-genes.fasta.all.maker.proteins.fasta), and [transcripts](data/Pd8825-genes.fasta.all.maker.transcripts.fasta) predicted by both SNAP and AUGUSTUS (which can all be found in the data directory and are also linked). 
