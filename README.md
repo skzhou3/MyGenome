@@ -211,10 +211,10 @@ Genome came back with some foreign and adaptor contammination. The following scr
 ```
 chmod +x exclude_contigs.sh
  ./exclude_contigs.sh Pd8825_final.fasta ContaminationExclude.txt
-chmod +x clean_contig.sh
+chmod +x clean_contigs.sh
 ./clean_contigs.sh excluded.fasta Contamination.txt
 ```
-***NOTE:** [exclude_contigs.sh](SLURM_SCRIPTS/exclude_contigs.sh) and [clean_contig.sh](SLURM_SCRIPTS/clean_contig.sh) are required for the command above. The [Contamination](files/Contamination.txt) and [ContaminationExclude](files/ContaminationExclude.txt) txt files were the error files from NCBI.*
+***NOTE:** [exclude_contigs.sh](SLURM_SCRIPTS/exclude_contigs.sh) and [clean_contigs.sh](SLURM_SCRIPTS/clean_contigs.sh) are required for the command above. The [Contamination](files/Contamination.txt) and [ContaminationExclude](files/ContaminationExclude.txt) txt files were the error files from NCBI.*
 
 Final cleaned genome sumbitted to NCBI can be found in the [data](data/cleaned_Pd8825.zip) directory.
 
