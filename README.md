@@ -139,7 +139,7 @@ The following SPAdes pipline trims, assmebles, and finalizes the genome assmebly
 ```
 sbatch trim-spades.sh . Pd8825 yes
 ```
-***NOTE:** Bash script can be found under `SLURM_SCRIPTS`*
+***NOTE:** Bash script can be found under [`SLURM_SCRIPTS`](SLURM_SCRIPTS/trim_spades.sh)*
 
 Results of SPAdes assembly (BUSCO command can be found above):
 |  BUSCO score (complete)  | BUSCO score (complete + fragmented) | 
