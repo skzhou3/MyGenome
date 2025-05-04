@@ -1,0 +1,351 @@
+SUBID     	BioProject	BioSample	Organism
+--------------------------------------------------------
+SUB15266372	PRJNA926786	SAMN46817650	Pyricularia oryzae
+
+[] We ran your sequences through our Contamination Screen. The screen found 
+contigs that need to be trimmed and/or excluded. The results are in the 
+Contamination.txt file posted in your submission on the Genome submission portal 
+https://submit.ncbi.nlm.nih.gov/subs/genome/. More details about the 
+contamination screening process are available at https://github.com/ncbi/fcs
+
+GenBank staff will automatically remove contaminants that are found to be 
+the entire sequence or at the end of a sequence, and will post the reports 
+and edited fasta file to the submission portal. Note that internal contamination 
+will not be automatically removed since the sequence may be misassembled and 
+therefore should be split at the contamination and resubmitted as separate sequences.
+In addition, we do not automatically remove mitochondrial sequences in 
+eukaryotic submissions. 
+
+If you selected the submission portal option "Do not automatically trim or 
+remove sequences identified as contamination" then you will need 
+to adjust the sequences appropriately and then resubmit your sequences. 
+After you remove the contamination, trim any Ns at the ends of the sequence 
+and remove any sequences that are shorter than 200 nt and not part of a 
+multi-component scaffold.  If you decide after reviewing the contamination
+results that you would like us to attempt to remove it for you, please email 
+genomes@ncbi.nlm.nih.gov.  As noted above, we cannot automatically remove 
+internal contamination or mitochondrial sequences.
+
+WARNING: If we do not hear from you by $(add.days,30), your 
+submission will be deleted from the processing queue.
+
+Note that mismatches between the name of the adaptor/primer identified in the screen 
+and the sequencing technology used to generate the sequencing data should not be used 
+to discount the validity of the screen results as the adaptors/primers of many 
+different sequencing platforms share sequence similarity.
+
+
+
+Contamination Results:
+
+
+Mitochondrion:
+[] Some sequences are similar to a mitochondrial sequence. There are three options:
+ (A) If you are not sequencing mitochondrial DNA, remove these sequences
+ (B) If you want to include the mitochondrial sequences in the genome submission, 
+ label them as mitochondrial. 
+- To label the sequences in a BATCH submission, add a source qualifier in the fasta  
+ definition line [location=mitochondrion].  See "IMPORTANT: Additional requirements 
+ for batch submissions" at https://www.ncbi.nlm.nih.gov/genbank/genomesubmit/#batch_assignment
+- If this is not a BATCH submission, indicate that these sequences are mitochondrial in the 
+ Assignment tab of the submission portal.
+- In addition, it is recommended but not required that you move these sequences to the end 
+of your submission or put them in a separate file so that  they are clustered together.
+(C) If these are nuclear mitochondrial pseudogene regions (numt's) that should remain 
+ in the submission, please notify us by including a comment in the submission portal 
+or by emailing us. Note that numts should be integrated into the genome and therefore 
+should only be marked as "Trim".  Any sequence marked as "Exclude" because of a hit 
+to mitochondria must either be removed (option A) or labeled as mitochondrial (option B).
+The numt sequences will still appear in the contamination report, but once you have 
+removed all those marked to exclude and told us that the rest are numts, you can ignore 
+the errors. We will manually override the error when we review your submission.
+
+
+Adaptor:
+[] Some of the sequences hit primers or adaptors used in Illumina, 
+454, or other sequencing strategies or platforms.  Adaptor at the 
+end of a sequence should be removed. However, if adaptors are 
+present within sequences then you should strongly consider 
+splitting the sequences at the adaptor because the adaptor sequence 
+could have been the region of overlap, causing a misassembly.
+
+
+Screened 3,990 sequences, 41,564,415 bp.
+108 sequences to exclude, 250 sequences to trim
+
+Trim:
+Sequence name, length, span(s), apparent source
+Pd8825_contig100	82960	1..78	adaptor:multiple
+Pd8825_contig1006	6897	6824..6897	adaptor:multiple
+Pd8825_contig102	82860	82789..82860	adaptor:multiple
+Pd8825_contig1025	6464	79..144	adaptor:multiple
+Pd8825_contig1029	6439	6373..6439	adaptor:multiple
+Pd8825_contig1032	6367	1..73	adaptor:multiple
+Pd8825_contig1033	6344	1..64	adaptor:multiple
+Pd8825_contig1033	6344	6307..6344	adaptor:multiple
+Pd8825_contig104	82449	67..101	adaptor:multiple
+Pd8825_contig104	82449	82372..82449	adaptor:multiple
+Pd8825_contig1041	6211	1..37	adaptor:NGB00754.1
+Pd8825_contig1042	6195	1..65	adaptor:multiple
+Pd8825_contig1050	6045	1..29	adaptor:multiple
+Pd8825_contig1052	5972	5915..5972	adaptor:multiple
+Pd8825_contig1064	5697	5616..5697	adaptor:multiple
+Pd8825_contig1066	5662	1..30	adaptor:multiple
+Pd8825_contig1075	5526	5415..5526	adaptor:multiple
+Pd8825_contig1078	5490	1..73	adaptor:multiple
+Pd8825_contig1086	5450	5372..5450	adaptor:multiple
+Pd8825_contig1087	5443	79..150	adaptor:NGB00754.1
+Pd8825_contig1088	5431	5381..5431	adaptor:multiple
+Pd8825_contig1091	5394	5348..5394	adaptor:multiple
+Pd8825_contig110	81606	1..31	adaptor:multiple
+Pd8825_contig1127	4869	1..73	adaptor:multiple
+Pd8825_contig1137	4714	1..21	adaptor:NGB04004.1
+Pd8825_contig114	81438	1..77	adaptor:multiple
+Pd8825_contig1155	4329	1..72	adaptor:multiple
+Pd8825_contig1166	4156	4114..4156	adaptor:multiple
+Pd8825_contig1194	3902	1..32	adaptor:multiple
+Pd8825_contig1196	3867	1..77	adaptor:multiple
+Pd8825_contig1201	3819	3779..3819	adaptor:multiple
+Pd8825_contig1210	3714	3643..3714	adaptor:multiple
+Pd8825_contig1212	3707	3649..3707	adaptor:multiple
+Pd8825_contig1213	3705	1..73	adaptor:multiple
+Pd8825_contig1215	3687	3615..3687	adaptor:multiple
+Pd8825_contig1222	3643	3609..3643	adaptor:NGB04004.1
+Pd8825_contig1231	3569	1..29	adaptor:multiple
+Pd8825_contig1237	3513	3486..3513	adaptor:multiple
+Pd8825_contig1258	3307	3269..3307	adaptor:multiple
+Pd8825_contig126	77632	1..27	adaptor:multiple
+Pd8825_contig126	77632	77564..77632	adaptor:multiple
+Pd8825_contig128	77614	77541..77614	adaptor:multiple
+Pd8825_contig133	76487	76371..76487	adaptor:multiple
+Pd8825_contig1338	2720	2644..2720	adaptor:multiple
+Pd8825_contig134	76443	1..77	adaptor:multiple
+Pd8825_contig137	76205	10280..10351	adaptor:multiple
+Pd8825_contig1374	2463	2392..2463	adaptor:multiple
+Pd8825_contig138	75704	75676..75704	adaptor:multiple
+Pd8825_contig1425	2149	1..73	adaptor:multiple
+Pd8825_contig1429	2146	1..75	adaptor:multiple
+Pd8825_contig1446	1996	1..52	adaptor:multiple
+Pd8825_contig1464	1897	1824..1897	adaptor:multiple
+Pd8825_contig147	72893	72820..72893	adaptor:multiple
+Pd8825_contig151	72157	1..75	adaptor:multiple
+Pd8825_contig152	71689	71617..71689	adaptor:multiple
+Pd8825_contig1521	1605	1508..1605	adaptor:NGB01080.1
+Pd8825_contig1534	1567	1495..1567	adaptor:multiple
+Pd8825_contig154	70637	70589..70637	adaptor:NGB00754.1
+Pd8825_contig157	70332	1..74	adaptor:multiple
+Pd8825_contig158	70252	1..37	adaptor:multiple
+Pd8825_contig1590	1341	1275..1341	adaptor:multiple
+Pd8825_contig1602	1302	1277..1302	adaptor:NGB04004.1
+Pd8825_contig167	67927	67856..67927	adaptor:multiple
+Pd8825_contig1676	1081	1..72	adaptor:multiple
+Pd8825_contig169	67623	1..73	adaptor:multiple
+Pd8825_contig175	66030	65968..66030	adaptor:multiple
+Pd8825_contig1824	742	669..742	adaptor:multiple
+Pd8825_contig183	64394	64322..64394	adaptor:multiple
+Pd8825_contig1845	713	1..75	adaptor:multiple
+Pd8825_contig185	64085	63994..64085	adaptor:multiple
+Pd8825_contig1859	692	1..43	adaptor:multiple
+Pd8825_contig186	64083	1..72	adaptor:multiple
+Pd8825_contig1866	683	624..683	adaptor:multiple
+Pd8825_contig1869	682	640..682	adaptor:NGB01093.1
+Pd8825_contig1875	677	591..677	adaptor:NGB00754.1
+Pd8825_contig194	62073	62001..62073	adaptor:multiple
+Pd8825_contig195	62022	1..72	adaptor:multiple
+Pd8825_contig195	62022	61984..62022	adaptor:multiple
+Pd8825_contig1953	599	1..111	adaptor:multiple
+Pd8825_contig196	61542	61466..61542	adaptor:multiple
+Pd8825_contig2	217370	1..61	adaptor:multiple
+Pd8825_contig20	141879	1..56	adaptor:multiple
+Pd8825_contig20	141879	141844..141879	adaptor:multiple
+Pd8825_contig203	58320	1..67	adaptor:multiple
+Pd8825_contig2064	514	1..75	adaptor:multiple
+Pd8825_contig213	56657	1..70	adaptor:multiple
+Pd8825_contig218	56027	55956..56027	adaptor:multiple
+Pd8825_contig219	55628	55598..55628	adaptor:multiple
+Pd8825_contig2193	454	382..454	adaptor:multiple
+Pd8825_contig22	141140	1..78	adaptor:multiple
+Pd8825_contig220	55530	55480..55530	adaptor:multiple
+Pd8825_contig222	55239	1..30	adaptor:multiple
+Pd8825_contig225	54815	54736..54815	adaptor:multiple
+Pd8825_contig228	54274	54168..54274	adaptor:multiple
+Pd8825_contig236	52296	1..66	adaptor:multiple
+Pd8825_contig241	51440	51374..51440	adaptor:multiple
+Pd8825_contig242	51418	1..110	adaptor:multiple
+Pd8825_contig247	50726	1..74	adaptor:multiple
+Pd8825_contig25	137484	1..44	adaptor:multiple
+Pd8825_contig252	49820	1..53	adaptor:multiple
+Pd8825_contig256	49250	1..32	adaptor:NGB04004.1
+Pd8825_contig257	49182	1..60	adaptor:multiple
+Pd8825_contig2571	358	1..72	adaptor:multiple
+Pd8825_contig27	133611	1..73	adaptor:multiple
+Pd8825_contig270	47036	1..37	adaptor:multiple
+Pd8825_contig271	46727	46701..46727	adaptor:NGB04004.1
+Pd8825_contig272	46433	46362..46433	adaptor:multiple
+Pd8825_contig275	46023	1..64	adaptor:multiple
+Pd8825_contig280	45461	1..72	adaptor:multiple
+Pd8825_contig282	45349	45267..45349	adaptor:multiple
+Pd8825_contig284	45290	45195..45233	adaptor:multiple
+Pd8825_contig286	45179	45107..45179	adaptor:multiple
+Pd8825_contig296	44636	1..72	adaptor:multiple
+Pd8825_contig296	44636	44562..44636	adaptor:multiple
+Pd8825_contig2976	289	1..67	adaptor:multiple
+Pd8825_contig302	44169	44119..44169	adaptor:multiple
+Pd8825_contig306	43144	43084..43144	adaptor:multiple
+Pd8825_contig309	43049	1..77	adaptor:multiple
+Pd8825_contig309	43049	43007..43049	adaptor:multiple
+Pd8825_contig310	42671	42597..42671	adaptor:multiple
+Pd8825_contig316	42355	1..76	adaptor:multiple
+Pd8825_contig317	42314	42283..42314	adaptor:multiple
+Pd8825_contig32	130821	130792..130821	adaptor:multiple
+Pd8825_contig321	42113	42027..42113	adaptor:multiple
+Pd8825_contig325	41771	41742..41771	adaptor:multiple
+Pd8825_contig33	128074	128008..128074	adaptor:multiple
+Pd8825_contig336	40562	40491..40562	adaptor:multiple
+Pd8825_contig340	40187	40115..40187	adaptor:NGB00754.1
+Pd8825_contig341	40176	1..73	adaptor:multiple
+Pd8825_contig343	39582	39504..39582	adaptor:multiple
+Pd8825_contig344	39464	1..26	adaptor:NGB04004.1
+Pd8825_contig346	39053	1..74	adaptor:multiple
+Pd8825_contig346	39053	38982..39053	adaptor:multiple
+Pd8825_contig35	124453	1..72	adaptor:multiple
+Pd8825_contig36	123333	123261..123333	adaptor:multiple
+Pd8825_contig365	37280	1..47	adaptor:multiple
+Pd8825_contig365	37280	37207..37280	adaptor:multiple
+Pd8825_contig373	36310	1..77	adaptor:multiple
+Pd8825_contig376	35830	1..74	adaptor:multiple
+Pd8825_contig380	35645	35581..35645	adaptor:multiple
+Pd8825_contig384	35081	1..73	adaptor:multiple
+Pd8825_contig393	34297	1..77	adaptor:NGB00754.1
+Pd8825_contig401	33645	33573..33645	adaptor:multiple
+Pd8825_contig404	33621	1..72	adaptor:multiple
+Pd8825_contig407	33555	1..65	adaptor:multiple
+Pd8825_contig409	33331	33258..33331	adaptor:multiple
+Pd8825_contig414	32969	32935..32969	adaptor:multiple
+Pd8825_contig415	32751	32723..32751	adaptor:multiple
+Pd8825_contig418	32268	1..40	adaptor:multiple
+Pd8825_contig419	32243	1..46	adaptor:multiple
+Pd8825_contig42	118718	1..36	adaptor:multiple
+Pd8825_contig422	32017	31973..32017	adaptor:multiple
+Pd8825_contig423	31949	1..78	adaptor:multiple
+Pd8825_contig430	31413	31341..31413	adaptor:multiple
+Pd8825_contig435	31153	31081..31153	adaptor:multiple
+Pd8825_contig440	30521	1..72	adaptor:multiple
+Pd8825_contig441	30477	30413..30477	adaptor:multiple
+Pd8825_contig443	30395	1..77	adaptor:multiple
+Pd8825_contig450	30006	1..72	adaptor:multiple
+Pd8825_contig464	28994	28923..28994	adaptor:multiple
+Pd8825_contig470	28575	28542..28575	adaptor:multiple
+Pd8825_contig471	28561	28500..28561	adaptor:multiple
+Pd8825_contig477	28075	1..40	adaptor:multiple
+Pd8825_contig477	28075	27997..28075	adaptor:multiple
+Pd8825_contig488	27445	1..77	adaptor:multiple
+Pd8825_contig488	27445	27375..27445	adaptor:multiple
+Pd8825_contig494	27292	1..75	adaptor:multiple
+Pd8825_contig498	26786	26741..26786	adaptor:NGB00754.1
+Pd8825_contig499	26754	26693..26754	adaptor:multiple
+Pd8825_contig500	26640	1..76	adaptor:multiple
+Pd8825_contig506	26343	1..76	adaptor:multiple
+Pd8825_contig506	26343	26272..26343	adaptor:multiple
+Pd8825_contig51	111230	111185..111230	adaptor:multiple
+Pd8825_contig514	25691	1..54	adaptor:NGB01093.1
+Pd8825_contig515	25683	1..66	adaptor:multiple
+Pd8825_contig516	25674	1..75	adaptor:multiple
+Pd8825_contig518	25633	1..73	adaptor:multiple
+Pd8825_contig518	25633	25562..25633	adaptor:multiple
+Pd8825_contig52	108094	108018..108094	adaptor:multiple
+Pd8825_contig528	25196	25094..25196	adaptor:multiple
+Pd8825_contig53	107371	1..72	adaptor:multiple
+Pd8825_contig555	22679	1..57	adaptor:multiple
+Pd8825_contig572	21781	1..73	adaptor:multiple
+Pd8825_contig575	21631	1..73	adaptor:multiple
+Pd8825_contig575	21631	21559..21631	adaptor:multiple
+Pd8825_contig578	21198	21144..21198	adaptor:multiple
+Pd8825_contig581	21029	20947..21029	adaptor:multiple
+Pd8825_contig584	20896	1..73	adaptor:multiple
+Pd8825_contig584	20896	20822..20896	adaptor:multiple
+Pd8825_contig59	104788	104713..104788	adaptor:multiple
+Pd8825_contig591	20453	20419..20453	adaptor:multiple
+Pd8825_contig600	20180	20122..20180	adaptor:multiple
+Pd8825_contig601	20165	20087..20165	adaptor:multiple
+Pd8825_contig602	20013	1..73	adaptor:multiple
+Pd8825_contig611	19487	19445..19487	adaptor:multiple
+Pd8825_contig617	19218	19189..19218	adaptor:multiple
+Pd8825_contig623	18873	1..99	adaptor:multiple
+Pd8825_contig625	18812	18743..18812	adaptor:multiple
+Pd8825_contig632	18366	18300..18366	adaptor:multiple
+Pd8825_contig640	17967	17892..17967	adaptor:multiple
+Pd8825_contig643	17964	17902..17964	adaptor:multiple
+Pd8825_contig645	17877	1..66	adaptor:multiple
+Pd8825_contig658	17153	1..43	adaptor:NGB00754.1
+Pd8825_contig664	17002	1..67	adaptor:multiple
+Pd8825_contig664	17002	16939..17002	adaptor:multiple
+Pd8825_contig670	16724	1..75	adaptor:multiple
+Pd8825_contig671	16691	16641..16691	adaptor:multiple
+Pd8825_contig679	16215	1..66	adaptor:multiple
+Pd8825_contig683	16041	1..73	adaptor:multiple
+Pd8825_contig689	15894	1..43	adaptor:multiple
+Pd8825_contig69	98770	1..81	adaptor:multiple
+Pd8825_contig702	15313	15242..15313	adaptor:multiple
+Pd8825_contig703	15307	1..77	adaptor:multiple
+Pd8825_contig703	15307	15257..15307	adaptor:multiple
+Pd8825_contig704	15243	15222..15243	adaptor:NGB04004.1
+Pd8825_contig706	15198	1..71	adaptor:multiple
+Pd8825_contig711	15124	1..72	adaptor:multiple
+Pd8825_contig712	15109	15054..15109	adaptor:multiple
+Pd8825_contig724	14672	14596..14672	adaptor:NGB00754.1
+Pd8825_contig73	97897	1..74	adaptor:multiple
+Pd8825_contig731	14562	1..73	adaptor:multiple
+Pd8825_contig755	13585	1..116	adaptor:multiple
+Pd8825_contig755	13585	13565..13585	adaptor:multiple
+Pd8825_contig762	13398	1..31	adaptor:multiple
+Pd8825_contig772	13150	1..48	adaptor:NGB00754.1
+Pd8825_contig772	13150	13074..13150	adaptor:NGB00754.1
+Pd8825_contig774	13033	12958..13033	adaptor:NGB00754.1
+Pd8825_contig783	12804	1..37	adaptor:NGB04004.1
+Pd8825_contig787	12675	1..46	adaptor:multiple
+Pd8825_contig788	12646	12624..12646	adaptor:NGB04004.1
+Pd8825_contig796	12421	12376..12421	adaptor:multiple
+Pd8825_contig806	12100	11984..12100	adaptor:NGB00754.1
+Pd8825_contig815	11896	11863..11896	adaptor:multiple
+Pd8825_contig817	11809	11788..11809	adaptor:NGB04004.1
+Pd8825_contig818	11741	1..38	adaptor:NGB00754.1
+Pd8825_contig82	91252	91177..91252	adaptor:multiple
+Pd8825_contig838	11198	1..78	adaptor:multiple
+Pd8825_contig839	11188	1..62	adaptor:multiple
+Pd8825_contig86	88632	1..73	adaptor:multiple
+Pd8825_contig865	10157	10085..10157	adaptor:multiple
+Pd8825_contig871	10034	9990..10034	adaptor:multiple
+Pd8825_contig883	9720	1..76	adaptor:NGB00754.1
+Pd8825_contig884	9694	1..44	adaptor:multiple
+Pd8825_contig886	9663	84..119	adaptor:multiple
+Pd8825_contig887	9649	1..77	adaptor:NGB00754.1
+Pd8825_contig899	9200	9176..9200	adaptor:NGB04003.1
+Pd8825_contig900	9198	1..77	adaptor:multiple
+Pd8825_contig903	9106	1..73	adaptor:multiple
+Pd8825_contig908	8956	1..48	adaptor:NGB00754.1
+Pd8825_contig91	86538	86469..86538	adaptor:multiple
+Pd8825_contig912	8843	8771..8843	adaptor:multiple
+Pd8825_contig928	8621	1..68	adaptor:multiple
+Pd8825_contig936	8427	1..75	adaptor:multiple
+Pd8825_contig936	8427	8355..8427	adaptor:multiple
+Pd8825_contig94	85676	1..76	adaptor:multiple
+Pd8825_contig944	8186	84..118	adaptor:multiple
+Pd8825_contig946	8158	1..57	adaptor:multiple
+Pd8825_contig948	8120	1..74	adaptor:multiple
+Pd8825_contig951	8098	1..71	adaptor:multiple
+Pd8825_contig951	8098	8010..8098	adaptor:multiple
+Pd8825_contig958	7954	7858..7954	adaptor:NGB00754.1
+Pd8825_contig96	84278	1..73	adaptor:multiple
+Pd8825_contig964	7868	1..43	adaptor:multiple
+Pd8825_contig968	7808	7697..7808	adaptor:multiple
+Pd8825_contig970	7736	1..77	adaptor:multiple
+Pd8825_contig975	7632	1..76	adaptor:multiple
+Pd8825_contig976	7597	1..77	adaptor:multiple
+Pd8825_contig980	7388	7315..7388	adaptor:multiple
+Pd8825_contig985	7334	7237..7334	adaptor:NGB00754.1
+Pd8825_contig99	83773	1..73	adaptor:multiple
+Pd8825_contig990	7224	1..73	adaptor:multiple
+Pd8825_contig990	7224	7165..7224	adaptor:multiple
+
+

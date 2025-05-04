@@ -1,0 +1,184 @@
+SUBID     	BioProject	BioSample	Organism
+--------------------------------------------------------
+SUB15266372	PRJNA926786	SAMN46817650	Pyricularia oryzae
+
+[] We ran your sequences through our Contamination Screen. The screen found 
+contigs that need to be trimmed and/or excluded. The results are in the 
+Contamination.txt file posted in your submission on the Genome submission portal 
+https://submit.ncbi.nlm.nih.gov/subs/genome/. More details about the 
+contamination screening process are available at https://github.com/ncbi/fcs
+
+GenBank staff will automatically remove contaminants that are found to be 
+the entire sequence or at the end of a sequence, and will post the reports 
+and edited fasta file to the submission portal. Note that internal contamination 
+will not be automatically removed since the sequence may be misassembled and 
+therefore should be split at the contamination and resubmitted as separate sequences.
+In addition, we do not automatically remove mitochondrial sequences in 
+eukaryotic submissions. 
+
+If you selected the submission portal option "Do not automatically trim or 
+remove sequences identified as contamination" then you will need 
+to adjust the sequences appropriately and then resubmit your sequences. 
+After you remove the contamination, trim any Ns at the ends of the sequence 
+and remove any sequences that are shorter than 200 nt and not part of a 
+multi-component scaffold.  If you decide after reviewing the contamination
+results that you would like us to attempt to remove it for you, please email 
+genomes@ncbi.nlm.nih.gov.  As noted above, we cannot automatically remove 
+internal contamination or mitochondrial sequences.
+
+WARNING: If we do not hear from you by $(add.days,30), your 
+submission will be deleted from the processing queue.
+
+Note that mismatches between the name of the adaptor/primer identified in the screen 
+and the sequencing technology used to generate the sequencing data should not be used 
+to discount the validity of the screen results as the adaptors/primers of many 
+different sequencing platforms share sequence similarity.
+
+
+
+Contamination Results:
+
+
+Mitochondrion:
+[] Some sequences are similar to a mitochondrial sequence. There are three options:
+ (A) If you are not sequencing mitochondrial DNA, remove these sequences
+ (B) If you want to include the mitochondrial sequences in the genome submission, 
+ label them as mitochondrial. 
+- To label the sequences in a BATCH submission, add a source qualifier in the fasta  
+ definition line [location=mitochondrion].  See "IMPORTANT: Additional requirements 
+ for batch submissions" at https://www.ncbi.nlm.nih.gov/genbank/genomesubmit/#batch_assignment
+- If this is not a BATCH submission, indicate that these sequences are mitochondrial in the 
+ Assignment tab of the submission portal.
+- In addition, it is recommended but not required that you move these sequences to the end 
+of your submission or put them in a separate file so that  they are clustered together.
+(C) If these are nuclear mitochondrial pseudogene regions (numt's) that should remain 
+ in the submission, please notify us by including a comment in the submission portal 
+or by emailing us. Note that numts should be integrated into the genome and therefore 
+should only be marked as "Trim".  Any sequence marked as "Exclude" because of a hit 
+to mitochondria must either be removed (option A) or labeled as mitochondrial (option B).
+The numt sequences will still appear in the contamination report, but once you have 
+removed all those marked to exclude and told us that the rest are numts, you can ignore 
+the errors. We will manually override the error when we review your submission.
+
+
+Adaptor:
+[] Some of the sequences hit primers or adaptors used in Illumina, 
+454, or other sequencing strategies or platforms.  Adaptor at the 
+end of a sequence should be removed. However, if adaptors are 
+present within sequences then you should strongly consider 
+splitting the sequences at the adaptor because the adaptor sequence 
+could have been the region of overlap, causing a misassembly.
+
+
+Screened 3,990 sequences, 41,564,415 bp.
+108 sequences to exclude, 250 sequences to trim
+
+Exclude:
+Sequence name, length, apparent source
+Pd8825_contig2027	539	anml:primates
+Pd8825_contig2069	512	anml:primates
+Pd8825_contig2492	374	anml:primates
+Pd8825_contig2502	371	prok:high GC Gram+
+Pd8825_contig2686	338	virs:eukaryotic viruses
+Pd8825_contig2992	287	anml:primates
+Pd8825_contig3031	279	anml:primates
+Pd8825_contig3039	278	prok:g-proteobacteria
+Pd8825_contig3047	277	prok:g-proteobacteria
+Pd8825_contig3055	276	anml:rodents
+Pd8825_contig3062	275	anml:rodents
+Pd8825_contig3082	273	anml:primates
+Pd8825_contig3084	273	anml:primates
+Pd8825_contig3090	272	anml:primates
+Pd8825_contig3091	272	anml:primates
+Pd8825_contig3092	272	prok:g-proteobacteria
+Pd8825_contig3095	271	anml:primates
+Pd8825_contig3097	271	anml:primates
+Pd8825_contig3098	271	anml:primates
+Pd8825_contig3107	270	prok:g-proteobacteria
+Pd8825_contig3109	270	anml:primates
+Pd8825_contig3119	269	anml:primates
+Pd8825_contig3128	268	anml:primates
+Pd8825_contig3150	266	anml:primates
+Pd8825_contig3151	266	anml:primates
+Pd8825_contig3182	262	anml:primates
+Pd8825_contig3191	261	prok:g-proteobacteria
+Pd8825_contig3192	261	prok:high GC Gram+
+Pd8825_contig3193	261	prok:high GC Gram+
+Pd8825_contig3197	260	anml:primates
+Pd8825_contig3208	259	anml:primates
+Pd8825_contig3209	259	anml:primates
+Pd8825_contig3221	258	anml:primates
+Pd8825_contig3229	257	anml:rodents
+Pd8825_contig3246	255	anml:primates
+Pd8825_contig3258	254	anml:primates
+Pd8825_contig3273	253	anml:primates
+Pd8825_contig3274	253	anml:primates
+Pd8825_contig3289	251	anml:primates
+Pd8825_contig3290	251	anml:primates
+Pd8825_contig3291	251	anml:primates
+Pd8825_contig3292	251	prok:g-proteobacteria
+Pd8825_contig3293	251	prok:g-proteobacteria
+Pd8825_contig3294	251	anml:primates
+Pd8825_contig3295	251	prok:g-proteobacteria
+Pd8825_contig3304	250	anml:primates
+Pd8825_contig3305	250	anml:primates
+Pd8825_contig3306	250	prok:a-proteobacteria
+Pd8825_contig3316	249	anml:primates
+Pd8825_contig3317	249	anml:primates
+Pd8825_contig3319	249	prok:high GC Gram+
+Pd8825_contig3328	248	prok:g-proteobacteria
+Pd8825_contig3330	248	anml:primates
+Pd8825_contig3332	248	prok:g-proteobacteria
+Pd8825_contig3338	247	anml:primates
+Pd8825_contig3339	247	prok:high GC Gram+
+Pd8825_contig3347	246	anml:primates
+Pd8825_contig3348	246	anml:primates
+Pd8825_contig3359	245	prok:g-proteobacteria
+Pd8825_contig3360	245	anml:primates
+Pd8825_contig3361	245	virs:prokaryotic viruses
+Pd8825_contig3362	245	anml:primates
+Pd8825_contig3364	245	anml:primates
+Pd8825_contig3372	244	anml:primates
+Pd8825_contig3374	244	prok:g-proteobacteria
+Pd8825_contig3386	243	adaptor:multiple
+Pd8825_contig3388	243	anml:primates
+Pd8825_contig3398	242	anml:primates
+Pd8825_contig3399	242	anml:primates
+Pd8825_contig3409	241	anml:primates
+Pd8825_contig3413	241	prok:high GC Gram+
+Pd8825_contig3418	240	anml:primates
+Pd8825_contig3426	239	anml:primates
+Pd8825_contig3428	239	prok:high GC Gram+
+Pd8825_contig3442	238	anml:primates
+Pd8825_contig3444	238	anml:primates
+Pd8825_contig3461	237	prok:g-proteobacteria
+Pd8825_contig3463	237	anml:primates
+Pd8825_contig3464	237	anml:primates
+Pd8825_contig3472	236	prok:g-proteobacteria
+Pd8825_contig3473	236	fung:basidiomycetes
+Pd8825_contig3483	235	anml:primates
+Pd8825_contig3484	235	prok:g-proteobacteria
+Pd8825_contig3486	235	anml:primates
+Pd8825_contig3499	234	prok:g-proteobacteria
+Pd8825_contig3500	234	prok:firmicutes
+Pd8825_contig3501	234	prok:g-proteobacteria
+Pd8825_contig3511	233	prok:g-proteobacteria
+Pd8825_contig3512	233	prok:high GC Gram+
+Pd8825_contig3513	233	prok:g-proteobacteria
+Pd8825_contig3528	232	prok:g-proteobacteria
+Pd8825_contig3529	232	prok:high GC Gram+
+Pd8825_contig3547	231	anml:primates
+Pd8825_contig3548	231	anml:primates
+Pd8825_contig3550	231	anml:primates
+Pd8825_contig3564	230	prok:g-proteobacteria
+Pd8825_contig3567	230	prok:high GC Gram+
+Pd8825_contig3568	230	prok:high GC Gram+
+Pd8825_contig3569	230	anml:primates
+Pd8825_contig3577	229	anml:primates
+Pd8825_contig3578	229	anml:primates
+Pd8825_contig3846	209	adaptor:multiple
+Pd8825_contig3880	207	adaptor:multiple
+Pd8825_contig3911	205	adaptor:multiple
+Pd8825_contig3930	204	adaptor:multiple
+Pd8825_contig3946	203	adaptor:multiple
+Pd8825_contig3981	201	adaptor:multiple
