@@ -205,6 +205,19 @@ awk '{sum += $4} END {print sum}' MoMitochondrion.Pd8825.BLAST
 ```
 Total length of mitochondrial sequences: 37536 bp
 
+5. Submit genome to [NCBI](https://submit.ncbi.nlm.nih.gov/) and fix any errors as needed. 
+
+Genome came back with some foreign and adaptor contammination. The following scripts and commands were used to clean and finalize the genome.
+```
+chmod +x exclude_contigs.sh
+ ./exclude_contigs.sh Pd8825_final.fasta ContaminationExclude.txt
+chmod +x clean_contig.sh
+./clean_contigs.sh excluded.fasta Contamination.txt
+```
+***NOTE:** [exclude_contigs.sh](SLURM_SCRIPTS/exclude_contigs.sh) and [clean_contig.sh](SLURM_SCRIPTS/clean_contig.sh) are required for the command above. The contamination txt files were the error files from NCBI.*
+
+Final cleaned genome sumbitted to NCBI can be found in the [data](data/cleaned_Pd8825.zip) directory.
+
 ## BLAST comparison against reference genome
 1. Use blastn to run a BLAST search against the reference genome (B71). Use singularity if needed (see above). 
 ```
